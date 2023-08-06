@@ -1,0 +1,36 @@
+!accelerate launch /web-draw/diff/diffusers/examples/dreambooth/train_dreambooth.py \
+  --instance_data_dir= "/web-draw/instance-images" \
+  --instance_prompt="1girl,by_pion1" \
+  --pretrained_model_name_or_path="/web-draw/Fo1" \
+  --pretrained_vae_name_or_path="/web-draw/Fo1/vae" \
+  --output_dir="output1" \
+  --seed=12345 \
+  --resolution=512 \
+  --optimizer="adamw_8bit" \
+  --train_batch_size=1 \
+  --learning_rate=3e-6 \
+  --lr_scheduler="consine_with_restarts" \
+  --lr_warmup_steps=100 \
+  --lr_cycles=1 \
+  --last_epoch=-1 \
+  --max_train_steps=2500 \
+  --save_interval=500 \
+  --sample_interval=2500 \
+  --class_data_dir="./class-images" \
+  --class_prompt="1girl"  \
+  --class_negative_prompt="lowres,bad" \
+  --num_class_images=50 \
+  --save_sample_prompt="by_pion1"  \
+  --save_sample_negative_prompt=""  \
+  --n_save_sample=4 \
+  --infer_batch_size=2 \
+  --infer_steps=28 \
+  --guidance_scale=11 \
+  --gradient_accumulation_steps=1 \
+  --gradient_checkpointing \
+  --save_unet_half \
+  --mixed_precision="fp16" \
+  --clip_skip=2 \
+  --with_prior_preservation \
+  --prior_loss_weight=1 \
+  --scale_lr \
